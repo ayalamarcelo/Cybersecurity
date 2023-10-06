@@ -1,7 +1,5 @@
 # Marcos y controles de seguridad
 
-***
-
 ## Marcos y controles generales
 
 1. Identificación y documentación de objetivos de seguridad.

@@ -1,7 +1,5 @@
 # Ataques de ciberseguridad pasados
 
-***
-
 Muchos de los ataques no son del todo nuevos, los atacantes alteran o mejoran métodos anteriores.
 Comprender los ataques pasados, puede orientarnos acerca de cómo manejar o investigar incidentes en tu trabajo como analista de seguridad.
 
