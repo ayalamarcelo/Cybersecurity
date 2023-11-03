@@ -1,0 +1,1 @@
+## Fases de un manual de estrategias para responder a incidentes
