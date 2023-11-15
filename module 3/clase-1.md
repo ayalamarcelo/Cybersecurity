@@ -125,4 +125,85 @@ La caoa de acceso a la red, a veces llamada caoa de enlace de datos, organiza el
 
 La capa de internet, a veces denominada capa de red, es responsable de garantizar la entrega al host de destino, que potencialmente puede residir en una red diferente. La capa de internet determina qué protocolo es el encargado de entregar los paquetes de datos. A continuación, se presentan algunos de los protocolos comunes que operan en la capa de internet:
 
-*Protocolo de internet (IP)*
+**Protocolo de internet (IP):** Envía los paquetes de datos al destino correcto y se basa en el protocolo de control de transmisión-protocolo de datagramas de usuario (TCP-UDP) para entregarlos al servicio correspondiente. Los paquetes de IP posibilitan la comunicación entre dos redes, ya que enrutan desde la red de origen hasta la de destino. El IP retransmite cualquier dato que se haya paerdido o dañado.
+
+**Protocolo de mensajes de control de internet(ICMP):** Comparte información de errores y actualizaciones de estado de los paquetes de datos. Resulta útil para detectar y solucionar errores de red y, además, informa sobre paquetes que fueron descartado o desaparecieron durante el tránsito, problemas de conectividad de red y paquetes redirigidos a otros enrutadores.
+
+## Capa de transporte
+
+La capa de transporte es responsable de entregar datos de manera confiable entre dos sistemas o redes. El protocolo de control de transmisión (TCP) y el de datagramas de usuario (UDP) son los dos protocolos de transporte que se producen en esta capa.
+
+**Protocolo de control de transmisión(TCP)**
+
+El TCP garantiza que los datos se transmitan de forma segura al servicio de destino. Contiene el número de puerto del servicio de destino previsto, que reside en el encabezado TCP de un paquete TCP-IP.
+
+**Protocolo de datagramas de usuario (UDP)**
+
+Las aplicaciones que no están afectadas por la confiabilidad de la transmisión usan el protocolo UDP. Los datos enviados a través de UDP no son objeto de un seguimiento tan exhaustivo como los enviados mediante TCP. Debido a que el UDP no establece conexiones de red, se utiliza principalmente para aplicaciones sensibles al rendimiento que operan en tiempo real, como la transmisión de video.
+
+**Capa de aplicación**
+
+La capa de aplicación en el modelo TCP-IP es similar a las capas de aplicación, presentación y sesión del modelo OSI. Es la responsable de realizar solicitudes de red o de responder a solicitudes. Además, esta capa define a qué servicios y aplicaciones de internet puede acceder cualquier usuario. Algunos de los protocolos comunes utilizados en esta capa son:
+
+* Protocolo de transferencia de hipertexto (HTTP)
+* Protocolo simple de transferencia de correo (SMTP)
+* Secure shell o shell seguro (SSH)
+* Protocolo de transferencia de archivos (FTP)
+* Sistema de nombres de dominio (DNS)
+
+Los protocolos de capa de aplicación se basan en capas subyacentes para transferir los datos a través de la red.
+
+## Comparación del modelo TCP-IP con el modelo OSI
+
+El modelo OSI organiza visualmente los protocolos de red en diferentes capas. Las y los profesionales de redes suelen usar este modelo para comunicarse entre sí sobre posibles fuentes de problemas o amenazas de seguridad.
+El modelo TCP-IP combina múltiples capas de modelo OSI. Ambos modelos comparten muchas similitudes, ya que definen estándares para las redes y dividen el proceso de comunicación de red en diferentes capas. Sin embargo, el modelo TCP-IP es una versión simplificada del modelo OSI.
+
+## Conclusión
+
+Los modelos TCP-IP y OSI son marcos conceptuales que ayudam a las y los profesionales de redes a visualizar los proceso y protocolos con respecto a la transmisión de datos entre dos o más sistemas. El modelo TCP-IP contiene cuatro capas y el modelo OSI siete.
+
+# El modelo OSI
+
+**Comparación entre el modelo TCP-IP y el modelo OSI**
+
+El modelo TCP-IP es un marco utilizado para visualizar cómo se organizan y transmiten los datos a través de una red. Este modelo ayuda a los ingenieros y analistas de seguridad de redes a diseñar la red de datos, conceptualizar procesos y comunicar dónde se producen las interrupciones o amenazas de seguridad.
+El modelo TCP-IP tiene cuatro capas: de acceso a la red, de internet, de transporte y de aplicacióm. Al analizar los eventos de la red, los profesionales de seguridad pueden determinar en qué cepa o capas se produjo el ataque, basándose en los procesos involucrados en el incidente.
+En cambio, el modelo OSI es un concepto estandarizado que describe las siete capas que las computadoras utilizan para comunicarse y enviar datos a través de la red. Las y los profesionales de seguridad y de redes suelen utilizarlo para comunicarse entre sí sobre posibles fuentes de problemas o amenazas de seguridad.
+Algunas organizaciones dependen en gran medida del modelo TCP-IP, mientras que otras prefieren usar el modelo OSI. Como analista, es importante conocer los dos modelos, dado que ambos son útiles para comprender cómo funcionan las redes.
+
+**Capa 7: Capa de aplicación**
+
+La capa de aplicación incluye procesos que involucran directamente al usuario cotidiano. Esta caoa incluye todos los protocolos de red que la aplicaciones de software utilizan para conectarlo a internet. Esta característica es la que identifica a la capa de aplicación: conexión de usuarios a la red a través de aplicaciones y solicitudes.
+Un ejemplo de un tipo de comunicación que ocurre en la capa de aplicación es el uso de un navegador web. El navegador internet utiliza HTTP o HTTPS para enviar y recibir información del servidor del sitio web. La aplicación de correo electrónico utiliza el protocolo simple de transferencia de correo (SMTP) para transmitir información de correo electrónico. Además, los navegadores web utilizan el protocolo del sistema de nombre de dominio (DNS) para traducir los nombres de dominio del sitio web en direcciones IP, que identidican el servidor web que aloja la información del sitio.
+
+**Capa 6: Capa de presentacióm**
+
+La funciones en la capa de presentación incluyen la traducción de datos y el cifrado para la red. Esta capa agrega y reemplaza datos con formatos que pueden ser entendidos por las aplicaciones (capa 7), en los sistemas de envío y recepción. Los formatos que están más cerca del usuario final, es decir, donde se encuentra la aplicación o dispositivo que utiliza el usuario para interactuar con la red o recibir información, pueden ser diferentes de los del sistema receptor. Los procesos en la capa de presentación requieren el uso de un formato estandarizado.
+Algunas funciones de formateo que se producen en la capa seis incluyen cifrado que se da en esta capa es SSL, que cifra los datos entre los servidores web y los navegadores como parte de sitios web con HTTPS.
+
+**Capa 5: Capa de sesión**
+
+Una sesión indica cuando se establece una conexión entre dos dispositivos. Una sesión abierta permite que los dispositivos se comuniquen entre sí. El objetivo de los protocolos de la capa de sesión es mantener la sesión abierta mientras se transiferen datos y cerrarla una vez que se completa la transmisión.
+La capa de sesión también es responsable de actividades como la autenticación , reconexión y establecimiento de puntos de control durante una transferencia de datos. Si la sesión se interrumpe, los puntos de control aseguran que, cuando se restablece la conexión, la transmisión se retome desde el último punto de control de la sesión. Las sesiones incluyen una solicitud y respuesta entre aplicaciones. Las funciones en la capa de sesión responden a solicitudes de servicio de procesos en la capa de presentación (capa 6) y envían solicitudes de servicios a la capa de transporte (capa 4).
+
+**Capa 4: Capa de transporte**
+
+La caoa de transporte es la responsable de enviar datos entre dispositivos. Además, esta capa maneja la velocidad y el flujo de transferencia, y divide los datos en segmentos más pequeños para facilitar el envío. La segmentación es el proceso de dividir una gran transmisión de datos en piezas más pequeñas que puedan ser procesadas por el sistema receptor. Para que se puedan procesar en la capa de sesión (capa 5), estos segmentos tienen que volverse a ensamblar en su destino. La velocidad y la tasa de transmisión también tienen que coincidir con la velocidad de conexión del sistema de destino. TCP y UDP son protocolos de capa de transporte.
+
+**Capa 3: Capa de red**
+
+La capa de red supervisa la recepción de los paquetes desde la capa de enlace de datos (capa 2) y las entrega al destino previsto. El destino previsto puede encontrarse en función de la dirección que reside en el marco de los paquetes de datos. Estos paquetes incluyen direcciones IP, que indican a los routers dónde enviarlos y se enrutan desde la red de envío hacia la red de recepción.
+
+**Capa 2: Capa de enlace de datos**
+
+La caoa de enlace de datos organiza el envío y la rececpción de paquetes de datos dentro de una sola red. Esta capa incluye los switches en la red local y las tarjetas de interfaz de red en los dispositivos locales.
+En la capa de enlace de datos se utilizan protocolos de control de red (NCP), el control de enlace de datos de alto nivel (HDLC) y el protocolo de control de enlace de datos sincrónico (SDLC).
+
+**Capa 1: Capa física**
+
+Como su nombre lo indica, la capa física corresponde al hardware físico utilizado en la transmisión de la red. Los hubs, los módems y el cableado que los conecta se consideran parte de esta capa. para viajes a través de un cable Ethernet o coaxial, un paquete de datos debe ser traducido en una sencuencia de ceros y unos, que se envían a través de los cables y coneciones físicas, se recibe y, luego, pasa a los niveles superiores del modelo OSI.
+
+
+## Direcciones IP y comunicacines de red
+
+Veamos cómo se usan las direcciones IP para comunicarse por una red. IP significa protocolo de Internet. Un protocolo de Internet, o dirección IP, es una cadena única de caracteres que identifica la ubicación de un dispositivo en Internet. Cada dispositivo tiene una dirección IP única, al igual que toda casa tiene su dirección postal. Hay dos tipos de direcciones IP: IP versión 4, o IPv4, e IP versión 6, o IPv6. Veamos ejemplos de una dirección IPv4. Las direcciones IPv4 se escriben con 4 números de 1, 2 o 3 dígitos separados por un punto. En los inicios de Internet,todas las direcciones IP eran IPV4. Pero el uso de Internet creció y estas direcciones empezaron a agotarse, por lo que se desarrolló IPv6. Las direcciones IPv6 tienen hasta 32 caracteres. De esta forma, puede haber más dispositivos conectados a Internet sin agotar las direcciones como ocurrió con IPv4. Las direcciones IP pueden ser públicas o privadas. Tu proveedor de Internet asigna una dirección IP pública que se conecta a tu ubicación geográfica. Las comunicaciones de tu dispositivo en Internet por la red tienen la misma dirección pública. Así como todos en una casa tienen la misma dirección postal, todos los dispositivos tienen la misma dirección IP pública. Las direcciones IP privadas solo las ven otros dispositivos en la misma red local. Así todos los dispositivos en tu red doméstica pueden comunicarse entre sí usando direcciones IP únicas que el resto no puede ver. La dirección MAC es otra que se usa en comunicaciones de red. Es un identificador alfanumérico único que se asigna a cada dispositivo físico en la red. Al recibir un paquete, el switch lee la dirección MAC del dispositivo destinatario y le asigna un puerto. Anota esta información en una tabla de direcciones MAC. La tabla de direcciones MAC es como una agenda que el switch usa para enviar paquetes a dispositivos. Aquí aprendiste sobre direcciones IPv4 e IPv6. Viste cómo las direcciones IP y MAC se usan en la comunicación en red y la diferencia entre una dirección IP privada y pública. 
