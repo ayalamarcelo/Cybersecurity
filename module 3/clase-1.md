@@ -207,3 +207,53 @@ Como su nombre lo indica, la capa física corresponde al hardware físico utiliz
 ## Direcciones IP y comunicacines de red
 
 Veamos cómo se usan las direcciones IP para comunicarse por una red. IP significa protocolo de Internet. Un protocolo de Internet, o dirección IP, es una cadena única de caracteres que identifica la ubicación de un dispositivo en Internet. Cada dispositivo tiene una dirección IP única, al igual que toda casa tiene su dirección postal. Hay dos tipos de direcciones IP: IP versión 4, o IPv4, e IP versión 6, o IPv6. Veamos ejemplos de una dirección IPv4. Las direcciones IPv4 se escriben con 4 números de 1, 2 o 3 dígitos separados por un punto. En los inicios de Internet,todas las direcciones IP eran IPV4. Pero el uso de Internet creció y estas direcciones empezaron a agotarse, por lo que se desarrolló IPv6. Las direcciones IPv6 tienen hasta 32 caracteres. De esta forma, puede haber más dispositivos conectados a Internet sin agotar las direcciones como ocurrió con IPv4. Las direcciones IP pueden ser públicas o privadas. Tu proveedor de Internet asigna una dirección IP pública que se conecta a tu ubicación geográfica. Las comunicaciones de tu dispositivo en Internet por la red tienen la misma dirección pública. Así como todos en una casa tienen la misma dirección postal, todos los dispositivos tienen la misma dirección IP pública. Las direcciones IP privadas solo las ven otros dispositivos en la misma red local. Así todos los dispositivos en tu red doméstica pueden comunicarse entre sí usando direcciones IP únicas que el resto no puede ver. La dirección MAC es otra que se usa en comunicaciones de red. Es un identificador alfanumérico único que se asigna a cada dispositivo físico en la red. Al recibir un paquete, el switch lee la dirección MAC del dispositivo destinatario y le asigna un puerto. Anota esta información en una tabla de direcciones MAC. La tabla de direcciones MAC es como una agenda que el switch usa para enviar paquetes a dispositivos. Aquí aprendiste sobre direcciones IPv4 e IPv6. Viste cómo las direcciones IP y MAC se usan en la comunicación en red y la diferencia entre una dirección IP privada y pública. 
+
+## Componentes de la comunicación en la capa de red
+
+**Operaciones en la capa de red**
+
+Las funciones en la capa de red organizan la dirección y la entrega de paquetes de datos a través de la red e internet desde el dispositivo host hasta el de destino. Esto incluye dirigir los paquetes de un enrutador a otro a través de internet, basándose en la dirección del protocolo de internet (IP) de la red de destino. La dirección IP de destino se encuentra dentro del encabezado de cada paquete de datos. Esta dirección se almacenerá en tablas de enrutamiento a lo largo del camino del paquete hacia su destino, para futuros propósitos de enrutamiento.
+Todos los paquetes de datos incluyen una dirección de IP; esto se denomina paquete IP o datagrama. Un router utiliza la dirección IP para enrutar paquetes de una red a otra, basándose en la información contenido en el encabezado IP de un paquete de datos. La información del encabezado no comunica solo la dirección del destino. También incluye información, como la dirección IP de origen, el tamaño del paquete y qué protocolo se utilizará para el área de datos del paquete.
+
+## Formato de un paquete IPv4
+
+A continuación, puedes ver el formato de un paquete IP versión 4 (IPv4) y un gráfico que detalla el encabezado del paquete. Un paquete IPv4 se compone de dos secciones, el encabezado y los datos:
+
+   * El tamaño del encabezado IP oscila entre 20 y 60 bytes. Incluye la información de enrutamiento IP que los dispositivos utilizan para dirigir el paquete. El formati de un encabezado de paquete IP está determinado por el protocolo IPv4.
+   
+   * La longitud de la sección de datos de un paquete IPv4 puede variar mucho, pero el tamaño máximo posible de un paquete IP es 65.536 bytes. Contiene el mensaje que se transfiere a la transmisión, como la información del sitio web o el texto del correo electrónico.
+
+Hay 13 campos dentro del encabezado un paquete IPv4:
+
+   *  **Versión:** el primer encabezado de 4 bits indica a los dispositivos receptores qué protocolo está utilizado el paquete. EL paquete utilizado en la ilustración anterior es un paquete IPv4.
+
+   * **Longitud del encabezado IP (HLEN):** HLEN es la longitud del encabezado del paquete. Este valor indica dónde termina el encabezado del paquete y comienza el segmento de datos.
+
+   * **Tipo de servicio (ToS):** los routers priorizan los paquetes a entregar con el fin de mantener la calidad del servicio en la red. El campo ToS proporciona esta información al router.
+
+   * **Longitud total:** este campo comunica la longitud total de todo el paquete IP, incluidos el encabezado y los datos. El tamaño máximo de un paquete IPv4 es de 65.535 bytes.
+
+   * **Identificación:** si el paquete IPv4 es superior a 65535 bytes, se divide o fragmenta en paquetes IP más pequeños. El campo de identificación proporciona un identificador único para todos los fragmentos del paquete IP original para que puedan volver a ensamblarse cuando lleguen a su destino.
+
+   * **Indicadores:** este campo proporciona al dispositivo de enrutamiento más información sobre si el paquete original se fragmentó y si hay más fragmentos en tránsito.
+
+   * **Desplazamiento de fragmentación:** el campo de desplazamiento de fragmento indica a los dispositivos de enrutamiento a qué parte del paquete original pertenece el fragmento.
+
+   * **Período de vida (TTL):** evita que los routers reenvíen los paquetes de datos de manera indefinida. Contiene un contador que determina la fuente. El contador disminuye de a uno, a medida que pasa por cada router. Cuando el contador TTL llega a cero, el router descartará el paquete y enviará al emisor un mensaje de tiempo superado ICMP.
+
+   * **Protocolo:** este campo indica al dispositivo receptor qué protocolo se utilizará para el área de datos del paquete.
+
+   * **Suma de comprobación del encabezado:** este campo contiene una suma de comprobación que se puede usar para detecta si la cabecera IP en tránsito está dañada. Los paquetes dañados se descartan.
+
+   * **Dirección IP de origen:** es la dirección IPv4 del dispositivo emisor.
+
+   * **Dirección IP de destino:** es la dirección IPv4 del dispositivo receptor.
+
+   * **Opciones:** este campo permite aplicar opcinoes de seguridad al paquete si el valor HLEN es mayor que cinco. Además, comunica estas alternativas a los dispositivos de enrutamiento.
+
+## Diferencia entre IPv4 e IPv6
+
+Es una parte anterior de este curso, aprendiste sobre la historia de las direcciones IP. Con el crecimiento de internet, se hizo evidente que todas las direcciones IPv4 se consumirían en algún momento, lo que se conoce como el agotamiento de direcciones IPv4. En ese momento, nadie había anticipado la cantidad de dispositivos informáticos que necesitarían una dirección IP en el futuro. En respuesta a esta problemática, se desarrolló IPv6, co el fin de mitigar el agotamiento de direcciones IPv4 y abordar otras preocupaciones relacionadas con esto.
+Una de las principales diferencias entre IPv4 e IPv6 es la longitud de las direcciones. Las direcciones IPv4 son numéricas, están compuestas por 4 bytes y adminten hasta 4300 millones de direcciones posibles. Un ejemplo sería: 1998.51.100.0. En cambio, las direcciones IPv6 son hexadecimales, están compuestas por 16 bytes y permiten hasta 340 undecillones de direcciones (la cifra 340 seguida de 36 0). Un ejemplo de una dirección IPv6 sería: 2002:0db8:0000:0000:0000:ff21:0023:1234.
+También hay algunas diferencias en el diseño del encabezado de un paquete IPv6. El formato del IPv6 es mucho más simple que el del IPv4. Por ejemplo, el encabezado del IPv4 incluye los campos HLEN, identificación e indicadores, mientras que el IPv6 no lo hace. EL encabezado del IPv6 tiene otros campos que no están incluidos en IPv4, como etqueta de flujo y clase de tráfico.
+Hay algunas diferencias de seguridad importante entre IPv4 e IPv6. IPv6 ofrece un enrutamiento más eficiente y elimina las colisiones de direcciones privadas que puede ocurrir en IPv4 cuando dos dispositivos de la misma red intentan usar la misma dirección.
