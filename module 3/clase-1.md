@@ -260,3 +260,66 @@ Hay algunas diferencias de seguridad importante entre IPv4 e IPv6. IPv6 ofrece u
 
 ## Protocolos de red
 Las redes se benefician de tener reglas. Las reglas garantizan que los datos enviados lleguen a su destino. Estas reglas se denominan protocolos de red. Estos son un conjunto de reglas usadas por dos o más dispositivos en una red para describir el orden de entrega y la estructura de los datos. Veamos en un escenario algunos tipos de protocolos de red y cómo funcionan juntos en una red. Imagina que deseas ver un sitio de recetas. Ingresas la dirección del sitio en la barra del navegador. Por ejemplo, wwww.recetasricas.org. Antes de acceder al sitio, tu dispositivo se comunica con servidor web. Esa comunicación usa un protocolo llamado protocolo de control de transmisión, o TCP. Este protocolo de comunicación por internet permite conectar dos dispositivos y enviar datos entre ellos. El TCP verifica ambos dispositivos antes de permitir más comunicaciones. Esto suele denominarse protocolo de enlace. Tras establecer la comunicacióm con un protocolo de enlase TCP, se realiza una solicitud a la red. En nuestro ejemplo, solicitamos datos del servidor de Recetas Ricas. Sus servidores responderán la solicitud y enviarán paquetes a tu dispositivo para ver la página web. Los paquetes de datos se mueven por la red entre dispositivos como routers. El protocolo de resolucióm de direcciones, o ARP, sirve para definir la dirección MAC del siguiente router o dispositivo. Esto garantiza que los datos lleguen a su destino. Tras establecer la comunicación y reconocer el dispositivo de destino, puedes acceder al sitio web Recetas Ricas. El protocolo seguro de transferencia de hipertexto, o HTTOS, es un protocolo de red que brinda un método seguro de comunicación entre servidores de clientes y de sitios. Permite al navegador solicitar una página de forma segura al servidor del sitio web y recibir una página web como respuesta. Ahora veremos el protocolo llamado sistema de nombres de dominio, o DNS, un protocolo de red que traduce nombres de dominio de internet a direcciones IP. El DNS envía el nombre de dominio y la dirección web a un servidor DNS que obtiene la dirección IP del sitio que quieres ver, en este caso, Recetas Ricas. La dirección IP se incluye como dirección de destino de los paquetes que van al servidor web del sitio. Solo al visitar un sitio, el dispositvo en tu red usa cuatro protocolos, TCP, ARP, HTTPS y DNS.
+
+## Protocolos de red comunes 
+
+Los protocolos de red desempeñan un papel fundamental para dirigir el tráfico hacia los dispositivos y servicios adecuados, teniendo en cuenta el tipo de comunicación que se lleva a cabo entre los dispositivos de una red. Estos protocolos son conjuntos de reglas aceptadas universalmente por todos los dispositivos de red, que establecen una base común sobre cómo se deben transferir los datos a través de una red.
+
+Existen tres categorías principales protocolos de red: protocolos de comunicación, de gestión y de seguridad. 
+
+    * Los protocolos de comunicación se utilizan para establecer conexiones entre servidores. Algunos ejemplos son TCP, UDP y SMTP, que proporciona un marco para la comunicación por correo electrónico. 
+
+    * Los protocolos de gestión, en cambio, se utilizan para solucionar problemas de red. Un ejemplo es el protocolo de mensajes de control de Internet (ICMP).
+
+    * En tanto, los protocolos de seguridad proporcionan cifrado para datos en tránsito. Algunos ejemplos incluyen IPSec y SSL/TLS.
+
+## Wi-Fi
+
+En esta sección del curso, también te presentamos varios protocolos de seguridad inalámbricos, incluidos la privacidad equivalente por cable (WEP), el  acceso Wi-Fi protegido (WPA), el WPA2 y el WPA3. El WPA3 cifra el tráfico con el cifrado del Advanced Encryption Standard (AES) a medida que avanza desde el dispositivo hasta el punto de acceso inalámbrico. El WPA2 y el WPA3 ofrecen dos modos: personal y empresarial. El modo personal es el más adecuado para redes domésticas, mientras que el empresarial suele utilizarse para redes y aplicaciones corporativas.
+Herramientas y prácticas de seguridad de redes 
+
+**Cortafuegos (firewalls)** 
+
+Anteriormente, aprendiste que los cortafuegos (firewalls) son dispositivos virtuales de red (NVA) o dispositivos de hardware que inspeccionan y pueden filtrar el tráfico de red antes de permitir su ingreso a la red privada. Los firewalls tradicionales se configuran con reglas que determinan qué tipos de paquetes de datos se permiten, en función del número de puerto y la dirección IP del paquete. 
+
+Existen dos categorías principales de cortafuegos (firewalls).
+
+    Cortafuegos Stateless (gestión sin estado): un tipo de cortafuegos que funciona según reglas predefinidas y no hace un seguimiento a la información de los paquetes de datos.
+
+    Cortafuegos Stateful (gestión con estado): un tipo de cortafuegos que hace un seguimiento de la información que pasa a través de este y filtra proactivamente las amenazas. A diferencia de los cortafuegos sin estado, que requieren que las reglas se configuren en ambas direcciones, un firewall con estado solo necesita una regla en una dirección. Esto se debe a que utiliza una “tabla de estados” para hacer un seguimiento de las conexiones, lo que le permite asociar el tráfico de retorno con una sesión existente. 
+
+Los cortafuegos de última generación (NGFW) son la protección de firewall con tecnología más avanzada. Superan la seguridad ofrecida por los cortafuegos Stateful (con estado) porque incluyen inspección profunda de paquetes (una especie de rastreo de paquetes que los examina y toma medidas si existen amenazas) y funciones de prevención de intrusiones que detectan amenazas de seguridad y notifican a quienes administran los cortafuegos. Los NGFW pueden inspeccionar el tráfico en la capa de aplicación del modelo TCP/IP y su compatibilidad suele depender de la aplicación. A diferencia de los firewalls tradicionales que bloquean el tráfico según las direcciones IP y los puertos, las reglas de los NGFW pueden configurarse para bloquear o permitir el tráfico en función de la aplicación. Algunos NGFW tienen funciones adicionales como sandboxing (entorno controlado) contra malware, antivirus de red y filtrado de URL y DNS. 
+
+**Servidores proxy**
+
+Otra manera de agregar seguridad a una red privada es mediante un servidor proxy. Estos servidores utilizan la traducción de direcciones de red (NAT) para actuar como una barrera entre los clientes en la red y las amenazas externas. Los servidores proxy directos manejan consultas de clientes internos cuando acceden a recursos externos a la red. Por otro lado, los servidores proxy inversos funcionan de manera opuesta, manejando las solicitudes provenientes de sistemas externos hacia los servicios en la red interna. Además, algunos servidores proxy se pueden configurar con reglas similares a un cortafuegos. Por ejemplo, es posible crear filtros para bloquear sitios web identificados como portadores de malware.
+Redes privadas virtuales (VPN)
+
+Una VPN es un servicio que cifra los datos en tránsito y oculta la dirección IP. Utiliza un proceso llamado encapsulación, en el que los datos encriptados se envuelven en paquetes de datos sin cifrar. Esto permite que los datos se transmitan a través de la red pública de forma anónima. Las VPN se utilizan en empresas y otras organizaciones para proteger las comunicaciones entre los dispositivos de los/las usuarios/as y los recursos corporativos, como servidores o equipos virtuales que alojan aplicaciones empresariales. También se pueden usar de manera personal para aumentar la privacidad, ya que permiten a los/las usuarios/as acceder a Internet sin que nadie pueda leer la información personal ni acceder a la dirección IP privada. Cada vez más, las organizaciones están adoptando una combinación de capacidades VPN y SD-WAN para garantizar la seguridad de sus redes. Una red de área amplia definida por software (SD-WAN) es un servicio WAN virtual que permite a las organizaciones conectar de forma segura a los/las usuarios/as con aplicaciones, en múltiples ubicaciones y a grandes distancias geográficas.
+
+
+# Ataques de interceptación de red
+
+En los ataques de interceptación de red, se obstaculiza el tráfico de red y se roba información valiosa, o se interfiere de algún modo en la transmisión.
+
+Los agentes de amenaza pueden usar herramientas de hardware o software para capturar e inspeccionar los datos en tránsito. Es lo que se conoce como rastreo de paquetes (packet sniffing). Además de ver información a la que no tienen derecho, los agentes de amenaza también pueden interceptar el tráfico de red y alterarlo. Estos ataques pueden causar daños a la red de una organización al insertar modificaciones de código malicioso, alterar el mensaje o bien, interrumpiendo las operaciones de la red. Por ejemplo, un/a atacante puede interceptar una transferencia bancaria y cambiar la cuenta que recibe los fondos por otra que esté bajo su control.
+
+Más adelante en este curso, profundizarás en la detección de paquetes maliciosos y otros tipos de ataques de interceptación de red: ataques en ruta y ataques de repetición.
+
+## Ataques de puerta trasera
+
+Un ataque de puerta trasera es otro tipo de ataque que deberás conocer como analista de seguridad. Una organización puede contar con muchas medidas de seguridad, como cámaras, escáneres biométricos y códigos de acceso, para evitar que los/las empleados/as entren y salgan sin ser vistos. Sin embargo, un/a empleado/a podría burlar las medidas de seguridad si encuentra una puerta trasera al edificio que no esté tan vigilada, lo que le permitiría escabullirse por allí. 
+
+En ciberseguridad, las puertas traseras son puntos débiles dejados intencionalmente por programadores/as o administradores/as de sistemas y redes, que eluden los mecanismos normales de control de acceso. Las puertas traseras están pensadas para ayudar a los/las programadores/as a solucionar problemas o realizar tareas administrativas. Sin embargo, las/los atacantes también pueden instalarlas tras haber puesto en riesgo a una organización, para asegurarse el acceso permanente.
+
+Una vez que la/el hacker ha ingresado a una red insegura a través de una puerta trasera, puede causar daños graves: instalar software malicioso, realizar un ataque de denegación de servicio (DoS), robar información privada o cambiar otras configuraciones de seguridad que dejen al sistema vulnerable a otros ataques. Un ataque DoS es un ataque que tiene como objetivo una red o un servidor y lo inunda con tráfico de red.
+
+## Posibles repercusiones en una organización
+
+Como ya aprendiste, los ataques a la red pueden tener un impacto negativo significativo en una organización. Examinemos algunas consecuencias potenciales.
+
+    Financieras: cuando un sistema queda fuera de línea a causa de un ataque DoS, o si las operaciones comerciales se detienen o ralentizan por alguna otra táctica, una empresa no puede realizar las tareas que generan ingresos. Dependiendo del tamaño de la organización, la interrupción de las operaciones puede costar millones de dólares. Además, si un agente de amenaza consigue acceder a la información personal de las/los clientes, la empresa podría tener que afrontar importantes gastos en litigios y acuerdos, si las personas damnificadas recurren a la justicia.
+
+    Reputación: los ataques también pueden tener un impacto negativo en la reputación de una organización. Si se hace público que una empresa ha experimentado un ataque cibernético, el público puede preocuparse por las prácticas de seguridad de la organización. Pueden dejar de confiarle su información personal y elegir a un competidor para satisfacer sus necesidades.
+
+    Seguridad pública: un ataque a una red gubernamental puede afectar potencialmente a la seguridad y el bienestar de los/las ciudadanos/as de un país. En los últimos años, las agencias de defensa de todo el mundo están invirtiendo mucho en combatir las tácticas de guerra cibernética. Si un agente de amenaza consiguiera acceder a una red eléctrica, un sistema público de agua o incluso un sistema de comunicaciones militar, el público podría sufrir daños físicos, como consecuencia de un ataque de intrusión en la red.
