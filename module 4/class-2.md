@@ -7,3 +7,52 @@ Una distribución usada mucho en seguridad es una marca de Offensive Security, d
 Veamos algunos ejemplos. Metasploit sirve para buscar y explotar vulnerabilidades en equipos. Con Buro Suite se buscan debilidades en apps web. Finalmente Jhon the Ripper sirve para adivinar contraseñas. Como analista, puede encargarte del análisis forense digital. El análisis forense digital consiste en recopilar y analizar datos para determinar qué ocurrió tras un ataque. Por ejemplo, podrías investigar datos relacionados con la actividad de red. Kali Linux también sirve para los profesionales en el campo forense digital. Tiene muchas herramientas para eso. Tcpdump analiza paquetes de línea de comandos. Se usa para capturar el tráfico de red. Wireshark es otra herramienta usada comúnmente en la seguridad. Tiene una GUI que puede usarse para analizar tráfico de red en vivo y capturado. Un último ejemplo, Autopsy es una herramienta forense para analizar discos duros y smartphones. Estas son algunas herramientas incluidad en Kali Linux. La distrubución ofrece muchas herramientas de pentesting y análisis forse digital.
 
 ## Instalación software kali linux
+* Tarea 1: Asegúrate de que la aplicación APT esté instalada
+
+`$ apt`
+APT es el administrador de paquetes recomendado para Debian.
+
+* Tarea 2: Instala y desinstala la aplicación Suricata
+
+`$ sudo apt install suricata`
+
+Usar el administrador de paquetes para instalar la aplicación suricata.
+
+>[!Note]
+> Los comandos `apt install` y `apt remove` deben incluir el comando `sudo` como prefijo ya que se requieren privilegios elevados para instalar y desinstalar software en Linux. Es posibble que demore algunos minutos.
+
+Verificar que esté instalada, para ello ejecutamos la aplicación instalada recientemente.
+
+`$ suricata`
+
+Cuando se instale, se presentará la información de uso y la versión.
+
+Ahora utilizaremos el administrador de paquetes para desinstalar Suricata.
+
+`sudo apt remove suricata`
+
+Para verificar que se haya desinstalado solo ejecutamos el comando de la aplicación nuevamente.
+
+`$ suricata` y luego presiona intro.
+
+Si está desinstalado, aparecerá un mensaje de error `-bash: /usr/bin/suricata: No such file or directory`.
+
+* Tarea 3: Instala la aplicación tcpdump
+
+En esta tarea, debemos instalar la aplicación tcpdump. Se trata de una herramienta de línea de comandos que se puede usar para capturar tráfico de red en una shell Bash de Linux.
+
+Usa el administrador de paquetes APT para instalar tcpdump.
+
+`sudo apt install tcpdump`
+
+* Tarea 4: Genera una lista de las aplicaciones instaladas.
+
+A continuación, debes confirmar que instalaste las aplicaciones indicadas. Es importante confirmar que se instalaron las aplicaciones correctas. Te suferimos que también verifiques con frecuencia que se hayan instalados las versiones adecuadas.
+
+1. Usa el apt para generar una lista de todas las aplicaciones instaladas.
+
+`apt list --installed`
+
+* Tarea 5: Reinstala la aplicación Suricata
+
+`sudo apt install suricata`
