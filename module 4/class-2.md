@@ -56,3 +56,10 @@ A continuación, debes confirmar que instalaste las aplicaciones indicadas. Es i
 * Tarea 5: Reinstala la aplicación Suricata
 
 `sudo apt install suricata`
+
+## Introducción a Shell
+Esta parte de la arquitectura de Linux es donde trabajarás como analista. Antes vimos el shell con otros componentes de Linux, pero veamos qué es y qué lo hace. El shell intepreta líneas de comandos. Es decir, te comunica con el SO mediante la línea de comandos. Antes vimos la interfaz de línea de comandos. Básicamente, eso es el shell. El shell ofrece la línea de comandos para que interactúes con el SO.
+
+Para decirle al SO qué hacer, ingresas comandos en esta interfaz. Un comando le indica a la computadora que haga algo. El shell se comunica con el kernel para ejecutar comandos. Antes vimos cómo el SO permite que el usuario se comunique con la computadora. EL shell es la parte del SO que logra esto.
+
+Es como un intérprete útil entre tú y el sistema. No hablas el idioma de la computadora, binario, así que no puedes comunicarte de forma directa. El shell te ayuda con eso. El so necesita el shell para la mayoría del trabajao, pero es una interfaz entre tú y el sistema. Te permite hacer cálculos, realizar pruebas y ejecutar apps. Sobre todo, te permite combinar estas operaciones y conectar apps entre sí para realizar tareas complejas y automatizadas. Hay muchas distrbicuiones de Linux y también muchos tipos de shells.
