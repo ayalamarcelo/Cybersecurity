@@ -63,3 +63,5 @@ Esta parte de la arquitectura de Linux es donde trabajarás como analista. Antes
 Para decirle al SO qué hacer, ingresas comandos en esta interfaz. Un comando le indica a la computadora que haga algo. El shell se comunica con el kernel para ejecutar comandos. Antes vimos cómo el SO permite que el usuario se comunique con la computadora. EL shell es la parte del SO que logra esto.
 
 Es como un intérprete útil entre tú y el sistema. No hablas el idioma de la computadora, binario, así que no puedes comunicarte de forma directa. El shell te ayuda con eso. El so necesita el shell para la mayoría del trabajao, pero es una interfaz entre tú y el sistema. Te permite hacer cálculos, realizar pruebas y ejecutar apps. Sobre todo, te permite combinar estas operaciones y conectar apps entre sí para realizar tareas complejas y automatizadas. Hay muchas distrbicuiones de Linux y también muchos tipos de shells.
+
+## 
