@@ -64,4 +64,11 @@ Para decirle al SO qué hacer, ingresas comandos en esta interfaz. Un comando le
 
 Es como un intérprete útil entre tú y el sistema. No hablas el idioma de la computadora, binario, así que no puedes comunicarte de forma directa. El shell te ayuda con eso. El so necesita el shell para la mayoría del trabajao, pero es una interfaz entre tú y el sistema. Te permite hacer cálculos, realizar pruebas y ejecutar apps. Sobre todo, te permite combinar estas operaciones y conectar apps entre sí para realizar tareas complejas y automatizadas. Hay muchas distrbicuiones de Linux y también muchos tipos de shells.
 
-## 
+## Entrada y salida del shell
+Al comunicarte con el shell, los comandos en este pueden recibir datos, producir salidas o dar mensajes de error. Veamos que la entrada estándar, salida estándar y mensajes de error. La entrada estándar es información que recibe el SO por la línea de comandos. Es como preguntarle a tu amiga algo en una conversación. La información se ingresa al shell mediante el teclado. Si el shel interpreta tu solicitud, le pide al kernel los recursos para ejecutar la tarea. Veamos el comando echo, que emite una cadena de texto especificada. Los datos de cadena son una secuencia ordenada de caracteres. En nuestro ejemplo, solo produce la cadena "Hello".
+
+Como entrada, escribiremos "echo hello" en el shell.
+
+Luego presionamos intro para obtener la salida. Pero antes, profundicemos en el concepto de salida. La salida estándar es la información que devuelve el SO por el shell. Así como tu amiga responde a tu pregunta, la salida es la respuesta de una computadora a tu mando.
+
+La saluda es lo que recibes. Retomemos nuestro ejemplo y enviemos la entrada "echo hello" al SO presionando intro. De inmediato, el shell devuelve la salida "hello". Finalmente el error estándar tiene mensajes de error que devuelve el SO por el shell. El sistema da un mensaje de error si no puede responder al comando. Esto puede ocurrir al escribir mal un comando o si el sistema no conoce la respuesta al comando. También puede ocurrir porque no tenemos los permisos para ejecutar un comando. Veremos otro ejemplo de error estándar. Ingresemos "eco hello" en el shell. Observa que escribí "eco" y no "echo". Al presionar intro aparece un mensaje de error.
