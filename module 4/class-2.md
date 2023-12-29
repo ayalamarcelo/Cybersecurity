@@ -74,3 +74,29 @@ Luego presionamos intro para obtener la salida. Pero antes, profundicemos en el 
 La saluda es lo que recibes. Retomemos nuestro ejemplo y enviemos la entrada "echo hello" al SO presionando intro. De inmediato, el shell devuelve la salida "hello". Finalmente el error estándar tiene mensajes de error que devuelve el SO por el shell. El sistema da un mensaje de error si no puede responder al comando. Esto puede ocurrir al escribir mal un comando o si el sistema no conoce la respuesta al comando. También puede ocurrir porque no tenemos los permisos para ejecutar un comando. Veremos otro ejemplo de error estándar. Ingresemos "eco hello" en el shell. Observa que escribí "eco" y no "echo". Al presionar intro aparece un mensaje de error.
 
 ## Entrada y salida en el shell
+* Genera resultados con el comando echo:
+
+1. ingresa echo hello en la shell y presiona intro.
+
+2. Vuelve a ejecutar el comando, pero encierra los datos de la cadena entre comillas. Ingresa echo "hello" en la shell y presiona intro.
+   
+3. Usa el comando echo para obtener como resultado tu nombre en la shell.
+
+* Genera resultados con el comando expr
+
+1. Calcula la cantidad de falsos positivos mediante el comando expr.
+   
+   Ingresa expr 32 - 8 en la shell y presiona intro.
+
+2. Ingresa expr 3500 * 12 en la shell y presiona intro.
+
+* Despeja la shell Bash
+  
+1. Ingresa clear en la shell.
+
+* Opcional, realiza más cálculos con el comando expr
+
+1. Genera al menos un nuevo resultado con el comando echo.
+2.  Realiza al menos un cálculo más con el comando expr.
+
+## Shell
