@@ -124,5 +124,53 @@ La búsqueda de la opción `-mtime` se basa en días, por lo que la entrada `-mt
 >[!Note]
 > Si quieres basar la búsqueda en minutos en lugar de días, puedes usar la opción `-mmin`.
 
+## Tarea 1: Busca mensajes de error en un archivo de registro
+
+En esta tarea, debes navegar hasta el directorio `/home/analyst/logs` e informar sobre los mensajes de error en el archivo `server_logs.txt`. Usarás `grep` para hacer una búsqueda en el archivo y recuperar solo las entradas correspondientes a errores.
+
+1. Nevagea hasta el directorio `/home/analyst/logs`.
+
+`cd logs`
+
+2. Usa `grep` para filtrar el archivo `server_logs.txt` y obtener todas las líneas que contienen la cadena de texto `error`.
+
+>[!note]
+> Si ingresas un comando de forma incorrecta y no regresa a la ventana de la linea de comandos, puede presionar `CTRL+C` para deterner el proceso y forzar la shell a regresar a la ventana de la línea de comandos.
+
+`grep error server_logs.txt`
+
+## Tarea 2: Encuentra archivos que contengan cadenas específicas
+
+En esta tarea, debes navegar hasta el directorio `/home/analyst/reports/users`, y usar los comandos y arguemntos de Linux para buscar archivos de datos del usuario que contengan una cadena específica en su nombre.
+
+1. Navega hasta el directorio `/home/analyst/reports/users`.
+
+`cd /home/analyst/reports/users`
+
+2. Usa el caracter de barra vertical (|), canaliza el resultado del comando `ls` al comando `grep` para enumarar únicamente los archivos que contenga la cadena `Q1` en su nombre.
+
+`ls | grep Q1`
+
+3. Enumera los archivos que contiene la palabra `access` en su nombre.
+   
+`ls | grep access`
+
+## Tarea 3: Busca más contenido en archivos
+
+En esta tarea, debes buscar información incluida en archivos de los usuarios que se hayan agregado al sistema o que se hayan borrado.
+
+1. Muestra los archivos en el directorio `/home/analyst/reports/users`.
+   
+`ls`
+
+2. Busca el nombre de usuario `jhill` en el archivo `Q2_deleted_users.txt`.
+
+`grep jhill Q2_deleted_users.txt`
+
+3. Realiza una búsqueda en el archivo `Q4_added_users.txt` para enumerar todos los usuarios que se agregaron al departamento de `human resources`.
+
+`grep "Human Resources" Q4_added_users.txt`
+
+## Crea y modifica directorios y archivos
 
 
