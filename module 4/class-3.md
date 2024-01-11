@@ -304,6 +304,74 @@ Con `chmod`, debes indentificar el archivo o directorio cuyos permisos cambiará
 
 En este ejemplo, g indica que cambiaremos los permisos de grupo y o, los permisos de otro. En este argumento, estos tipos de propietario se separan por una coma. Pero queremos agregar o quitar permisos. Para saberlo, usamos operadores matemáticos. El signo + después de g indica que queremos agregar permisos de grupo. El signo + después de g indica que queremos agregar permisos de grupo. El signo - después de o indica que queremos quitarlos de otros usuarios.
 Qué cambios queremos hacer: Sabemos que r representa permisos de lectura, w representa permisos de escritura y x representa permisos de ejecución. En este caso, w indica que agregaremos permisos de escritura y x representa permisos de ejecución. En este caso, w indica que agregaremos permisos de escritura al grupo y r que quitamos permisos de lectura a otros usuarios.
-Si usamos el comando `ls-l`, veremos los permisos del archivo. Mjuestra los permisos del único archivo en este directorio: access.txt. Antes vimos cómo leer estos permisos. Los caracteres del segundo al cuarto indican que el usuario tenía permisos de lectura y escritura. Los caracteres quintoa séptimo indican que el grupo solo tiene permisos de lectura. Los caracteres octavo a décimo muestran que el tipo otros usuarios solo tiene permisos de lectura. Debemos ajustar los permisos. Queremos que los analistas del grupo security tengan permiso de escritura, pero deseamos quitar los permisos de lectura para otros usuarios. Agregamos entonces permisos de escritura para grupo y quitamos los de otros usuarios. Ejecutamos ls-l de nuevo. Esto muestra un cambio en los permisos de access.txt. El segmento central de permisos de grupo w se agregó para dar permisos de escritura. Otro cambio es que la r se eliminó en el último segmento, lo que indica que se quitaron los permisos de lectura para otros usuarios.
+Si usamos el comando `ls-l`, veremos los permisos del archivo. Muestra los permisos del único archivo en este directorio: access.txt. Antes vimos cómo leer estos permisos. Los caracteres del segundo al cuarto indican que el usuario tenía permisos de lectura y escritura. Los caracteres quintoa séptimo indican que el grupo solo tiene permisos de lectura. Los caracteres octavo a décimo muestran que el tipo otros usuarios solo tiene permisos de lectura. Debemos ajustar los permisos. Queremos que los analistas del grupo security tengan permiso de escritura, pero deseamos quitar los permisos de lectura para otros usuarios. Agregamos entonces permisos de escritura para grupo y quitamos los de otros usuarios. Ejecutamos ls-l de nuevo. Esto muestra un cambio en los permisos de access.txt. El segmento central de permisos de grupo w se agregó para dar permisos de escritura. Otro cambio es que la r se eliminó en el último segmento, lo que indica que se quitaron los permisos de lectura para otros usuarios.
 
-##
+## Permisos de lectura
+
+En Linux, los permisos se representan con una cadena de 10 caracteres. Estos son algunos permisos:
+
+   * read (lectura): para archivos, es la capacidad de leer el contenido de los archivos; para directorios, es la capacidad de leer todo el contenido del directorio, incluidos los archivos y subdirectorios
+
+   * write (escritura): para archivos, es la capacidad de realizar modificaciones en el contenido de los archivos; para directorios, es la capacidad de crear archivos nuevos en el directorio
+
+   * execute (ejecución): para archivos, es la capacidad de ejecutar el archivo si se trata de un programa; para directorios, es la capacidad de ingresar al directorio y acceder a sus archivos.
+   
+Estos permisos se otorgan a los siguientes tipos de propietarios:
+
+   * user (usuario): propietario del archivo
+
+   * group (grupo): un grupo más grande del que el propietario forma parte
+
+   * other (otros usuarios): todos los demás usuarios del sistema.
+
+## Exploración de los permisos existentes
+
+Puedes usar el comando ls para investigar quién tiene permisos en archivos y directorios. Antes, aprendiste que ls muestra los nombres de los archivos y directorios en el directorio de trabajo actual.
+
+Existen otras opciones que puedes agregar al comando ls para que sea más específico. Algunas de estas opciones proporcionan detalles sobre los permisos. Estas son algunas que utilizan el comando ls y resultan importantes para las/los analistas de seguridad:
+
+    ls -a: muestra archivos ocultos. Los archivos ocultos comienzan con un punto (.) al principio.
+
+    ls -l: muestra permisos para archivos y directorios. También muestra otra información adicional, incluido el nombre del propietario, el grupo, el tamaño del archivo y la hora en que fueron modificados por última vez.
+
+    ls -la: muestra los permisos de archivo y directorios, incluidos los archivos ocultos. Se trata de una combinación de las otras dos opciones.
+
+Cambio de permisos
+
+El principio de mínimo privilegio es el concepto de otorgar solo el acceso y la autorización mínimos necesarios para ejecutar una tarea o función. En otras palabras, los/las usuarios/as no deben tener privilegios que estén más allá de lo necesario. No seguir el principio del mínimo privilegio puede crear riesgos de seguridad.
+
+El comando chmod puede ayudarte a administrar esta autorización. El comando chmod cambia los permisos en archivos y directorios. 
+
+## Cómo usar chmod
+
+El comando chmod requiere dos argumentos. El primer argumento indica cómo cambiar los permisos, y el segundo indica el archivo o directorio para el que quieres cambiar los permisos. Por ejemplo, el siguiente comando agregaría todos los permisos a login_sessions.txt:
+
+chmod u+rwx,g+rwx,o+rwx login_sessions.txt
+
+Si quisieras quitar todos los permisos, podrías usar
+
+chmod u-rwx,g-rwx,o-rwx login_sessions.txt
+
+Otra forma de asignar estos permisos es usar el signo igual (=) en este primer argumento. Al usar = con chmod, se establecen o asignan los permisos exactamente según se especificó. Por ejemplo, el siguiente comando establecería permisos de lectura para login_sessions.txt para usuario, grupo y otros usuarios:
+
+chmod u=r,g=r,o=r login_sessions.txt
+
+Este comando sobreescribe permisos existentes. Por ejemplo, si antes el usuario tenía permisos de escritura, estos permisos de escritura se eliminan después de especificar permisos de solo lectura con =.
+
+## El principio de mínimo privilegio en acción
+
+Como analista de seguridad, es posible que te encuentres en una situación como esta: hay un archivo llamado bonuses.txt dentro de un directorio de remuneración. El propietario de este archivo es un miembro del departamento de Recursos Humanos cuyo nombre de usuario es hrrep1. Se decidió que hrrep1 necesita acceso a este archivo. Pero, dado que este archivo contiene información confidencial, nadie más en el grupo hr debería acceder a él.
+
+Ejecutas ls -l para verificar los permisos de los archivos en el directorio de remuneración y descubres que los permisos para bonuses.txt son -rw-rw----. El tipo propietario del grupo tiene permisos de lectura y escritura que no se alinean con el principio de mínimo privilegio. 
+
+Para remediar la situación, ingresas chmod g-rw bonuses.txt. Ahora, solo puede acceder a este archivo el/la usuario/a que lo necesita para llevar a cabo sus responsabilidades laborales.
+
+## Situación
+
+En este caso, debes examinar y administrar los permisos de los archivos del directorio /home/researcher2/projects para el usuario researcher2.
+
+El usuario researcher2 es parte del grupo research_team.
+
+Debes verificar los permisos para todos los archivos del directorio, incluidos los archivos ocultos, para asegurarte de que coincidan con el grado de autorización que debería otorgarse. De no ser así, debes cambiar los permisos.
+
+Estos son los pasos que seguirás: Primero, verificarás los permisos del usuario y el grupo para todos los archivos del directorio projects. A continuación, verificarás si algún archivo tiene permisos incorrectos y los modificarás según sea necesario. Por último, verificarás los permisos del directorio /home/researcher2/drafts y los modificarás para quitar los accesos no autorizados.
