@@ -375,3 +375,191 @@ El usuario researcher2 es parte del grupo research_team.
 Debes verificar los permisos para todos los archivos del directorio, incluidos los archivos ocultos, para asegurarte de que coincidan con el grado de autorización que debería otorgarse. De no ser así, debes cambiar los permisos.
 
 Estos son los pasos que seguirás: Primero, verificarás los permisos del usuario y el grupo para todos los archivos del directorio projects. A continuación, verificarás si algún archivo tiene permisos incorrectos y los modificarás según sea necesario. Por último, verificarás los permisos del directorio /home/researcher2/drafts y los modificarás para quitar los accesos no autorizados.
+
+## Agrega y elimina usuarios
+Esto se relaciona con el concepto de autenticación. La autenticación es el proceso en el que el usuario demuestra quien dice ser en el sistema. Así como en un edificio físico, no todos los usuarios pueden entrar, no todos los usuarios deben poder acceder al sistema. Pero hay que garantizar que quienes deban acceder puedan hacerlo. Es por eso que necesitamos agregar usuarios. Los nuevos usuarios pueden serlo para la organización o para el grupo. Esto podría deberse a un cambio en la estructura de la organización o a un orden de la gerencia de mover a alguein. Asimismo, cuando los usuarios se van de la empresa, deben eliminarse. Ya no deben tener acceso a ninguna parte del sistema. Si solo cambian de grupo, deben eliminarse de los grupos a los que ya no pertenecen. Vimos por qué es importante agregar y eliminar usuarios. Ahora hablemos de otro tipo de usuario: el usuario root, o raíz. Un usuario root o raíz, o superusuario, tiene privilegiois elevados para modificar el sistema. Los usuarios normales tienen limitaciones, el usuario root, no. Quienes deben realizar ciertas tareas pueden agregarse temporalmente como usuarios root. Los usuarios root puede crear, modificar o eliminar cualquier archivo y ejecutar cualquier programa. Solo los usuarios root o cuentas con privilegios de raíz pueden agregar usuarios nuevos. Quizás te preguntes cómo alguien se convierte en superusuario. Una forma es iniciar sesión como usuario root, ero ejecutar comandos como usuario root puede ser problemático. EL primer problema de iniciar sesión como usuario root es el riesgo de seguridad. Los atacante intentarán vulnerar la cuenta raíz. Como es la cuenta más poderosa, para protegerse, debe tener el inciio de sesión desactivado. Otro problema es que es muy fácilcometer errores irreversibles. Es muy fácil escribir el comando incorrecto en la CLI, y si estás como usuario root, corres más riesgo de cometer errores irreversibles, como eliminar un directorio de forma permanente. Finalmente, está el probelma de la rendición de cuentas. En un entorno multiusuario como Linux, hay muchos usuarios. Si alguien inició sesión como root, no hay forma de rastrear quién ejecutó un comando determinado.
+
+Una solución para resolver este problema es `sudo`. El comando sudo concede permisos elevados de forma temporal a usuarios específicos. ESte es un enfoque más controlado que el de usuario root, que ejecuta comandos con privilegios de root. Sudo resuleve muchos problemas asociados con el usuario root. Sudo viene del inglés "super user do", y permite ejecutar mucho problemas como usuario elevado sin iniciar ni cerrar sesión de otra cuenta. Al ejecutar sudo se te pedirá la contraseña del usuario de la sesión actual. No todos los usuarios de un sistema pueden convertirse en superusuarios. Los usuarios deben recibir acceso sudo con un archivo de confirguración llamado archivos sudoers. Luego de haber aprendido sobre sudo, veamos cómo usarlo con otro comando para agregar usuarios. Este comando es `useradd`, useradd agrega in usuario al sistema. Solo los usuarios root o con privilegios sudo pueden usar un comando useradd. 
+
+Agregar un usuario desde sistema con `useradd`:
+
+```Bash
+$ sudo useradd salesrep7
+
+```
+
+Eliminar un usuario desde sistema con `userdel`:
+
+```Bash
+$ sudo userdel salesrep7
+```
+
+## Uso responsable de sudo
+
+Anteriormente, exploraste la autorización, la autenticación y los comandos de Linux con sudo, useradd y userdel. El comando sudo es importante para las/los analistas de seguridad porque permite a los/las usuarios/as tener permisos elevados sin arriesgar el sistema ejecutando comandos como usuario root. En esta lectura, continuarás explorando la autorización, la autenticación y los comandos de Linux y aprenderás dos comandos más que se pueden usar con sudo: usermod y chown. 
+Uso responsable de sudo
+
+Para administrar la autorización y la autenticación, tienes que ser un usuario root o un usuario con privilegios elevados para modificar el sistema. El usuario root (raíz) también puede llamarse “superusuario”. Para convertirte en usuario root, debes iniciar sesión como tal. Sin embargo, no se recomienda ejecutar comandos como usuario root en Linux, ya que pueden surgir riesgos de seguridad si un agente de amenaza compromete esa cuenta. También es fácil cometer errores irreversibles, y el sistema no puede rastrear quién ejecutó un comando. Por estas razones, en lugar de iniciar sesión como usuario root, se recomienda usar sudo en Linux cuando necesites privilegios elevados.
+
+El comando sudo otorga temporalmente permisos elevados a usuarios específicos. El nombre de este comando proviene de “super user do” (“superusuario” y “hacer”). Para que puedan usar sudo, se les debe otorgar acceso a los usuarios a través de un archivo de configuración, que se llama “sudoers file”. Si bien es preferible usar sudo a iniciar sesión como usuario root, es importante tener en cuenta que los usuarios con permisos elevados para usar sudo podrían estar en mayor riesgo en caso de un ataque.
+
+Esta situación puede compararse con la de un hotel que tiene una llave maestra. La llave maestra se puede usar para acceder a cualquier habitación del hotel. Algunos/as trabajadores necesitan esta llave para realizar su trabajo. Por ejemplo, para limpiar todas las habitaciones, la persona a cargo debería escanear la tarjeta de identificación y, luego, usar esta llave maestra. Sin embargo, si una persona ajena a la red del hotel obtuviera acceso a la tarjeta de identificación y la llave maestra de la persona a cargo de la limpieza, podría acceder a cualquier habitación del hotel. En este ejemplo, la persona a cargo de la limpieza con la llave maestra representa a un/a usuario/a que usa sudo para obtener privilegios elevados. Debido a los peligros que sudo supone, solo quienes estrictamente necesitan usarlo deben tener estos permisos.
+
+Además, incluso si necesitas acceso a sudo, debes tener cuidado y usarlo solo con los comandos que necesitas. La ejecución de comandos con sudo permite a los/las usuarios/as eludir los controles de seguridad típicos que existen para evitar que un/a atacante obtenga acceso elevado.
+
+Nota: Ten cuidado de no usar sudo si estás copiando comandos de una fuente en línea. Es importante que no uses sudo por accidente. 
+Autenticación y autorización con sudo
+
+Puedes usar sudo para muchas tareas de gestión de autenticación y autorización. Como recordatorio, la autenticación es el proceso de verificar quién es una persona, mientras que la autorización es el concepto de otorgar acceso a recursos específicos en un sistema. Estos son algunos de los comandos clave que se utilizan para estas tareas:
+
+### useradd
+
+El comando useradd agrega un usuario al sistema. Para agregar un usuario con el nombre de usuario fgarcia con sudo, ingresa sudo useradd fgarcia. Existen otras opciones que puedes usar con useradd:
+
+    -g: Establece el grupo predeterminado del usuario, también conocido como su grupo principal.
+
+    -G: Agrega al usuario a grupos adicionales, también llamados grupos complementarios o secundarios.
+
+Para usar la opción -g, debe especificarse el grupo principal después de -g. Por ejemplo, al ingresar sudo useradd -g security fgarcia, se agrega a fgarcia como un nuevo usuario y se le asigna security como grupo principal.
+
+Para usar la opción -G, debe incluirse el grupo complementario en el comando después de -G. Con la opción -G, puedes agregar más de un grupo complementario a la vez. Al ingresar sudo useradd -G finance,admin fgarcia, se agrega a fgarcia como usuario nuevo y se lo añade a los grupos existentes finance y admin.
+
+### usermod
+
+El comando usermod modifica las cuentas de usuario existentes. Las mismas opciones -g y -G del comando useradd pueden utilizarse con usermod si el usuario ya existe. 
+
+Para cambiar el grupo principal de un usuario existente, debes usar la opción -g. Por ejemplo, al ingresar sudo usermod -g executive fgarcia, se cambiaría el grupo principal de fgarcia a executive.
+
+Para agregar un grupo complementario para un usuario existente, debes usar la opción -G. También necesitas una opción -a, que agrega al usuario a un grupo existente y solo se usa con la opción -G. Por ejemplo, al ingresar sudo usermod -a -G marketing fgarcia, se agregaría el usuario existente fgarcia al grupo complementario marketing.
+
+Nota: Al cambiar el grupo complementario de un usuario existente, si no incluyes la opción -a, -G reemplazará a cualquier grupo complementario existente con aquellos  que se especifiquen después de usermod. El uso de -a con -G asegura que se agreguen los nuevos grupos, pero no se reemplaza a los grupos existentes.
+
+Hay otras opciones que puedes usar con usermod para especificar cómo quieres modificar el usuario, entre ellas, las siguientes:
+
+    -d: Cambia el directorio de inicio del usuario.
+
+    -l: Cambia el nombre de inicio de sesión del usuario.
+
+    -L: Bloquea la cuenta para que el usuario no pueda iniciar sesión.
+
+La opción siempre va después del comando usermod. Por ejemplo, para cambiar el directorio de inicio de fgarcia a /home/garcia_f, ingresa sudo usermod -d /home/garcia_f fgarcia. La opción -d va justo después del comando usermod y antes de los otros dos argumentos necesarios.
+
+### userdel
+
+El comando userdel elimina a un usuario del sistema. Por ejemplo, al ingresar sudo userdel fgarcia, se elimina a fgarcia como usuario. Ten cuidado antes de eliminar a un usuario con este comando.
+
+El comando userdel no elimina los archivos en el directorio de inicio del usuario, a menos que se use la opción -r. Al ingresar sudo userdel -r fgarcia, se eliminaría a fgarcia como usuario y se eliminarían todos los archivos en su directorio de inicio. Antes de eliminar cualquier archivo de usuario, debes asegurarte de tener copias de seguridad en caso de que las necesites más adelante.
+
+Nota: En lugar de eliminar al usuario, podrías considerar desactivar su cuenta con usermod -L. Esto le impide al usuario iniciar sesión y te otorga acceso a su cuenta y sus permisos asociados. Por ejemplo, si un usuario abandona una organización, esta opción te permitiría identificar los archivos sobre los que tiene propiedad, por lo que podrías transferir esta propiedad a otros usuarios.
+
+### chown
+
+El comando chown cambia la propiedad de un archivo o un directorio. Puedes usar chown para cambiar la propiedad del usuario o del grupo. Para cambiar el usuario propietario del archivo access.txt a fgarcia, ingresa sudo chown fgarcia access.txt. Para cambiar el grupo propietario del archivo access.txt a security, ingresa sudo chown :security access.txt. Tienes que ingresar dos puntos (:) antes de security para designarlo como un nombre de grupo.
+
+Al igual que con useradd, usermod y userdel, existen otras opciones que puedes usar con chown.
+
+## Ejericio
+
+En esta situación, un nuevo empleado con el nombre de usuario researcher9 se une a una organización. Debes agregarlo al sistema y seguir administrando su acceso durante su permanencia en la organización.
+
+Estos son los pasos que seguirás: En primer lugar, agregarás un nuevo empleado al sistema y, luego, al grupo primario correspondiente. En segundo lugar, harás que este empleado sea propietario de un archivo relacionado con un proyecto en particular. En tercer lugar, agregarás al nuevo empleado a un grupo complementario. Por último, borrarás al empleado del sistema.
+Nota: Cuando comiences este lab, verás que ya accediste como usuario analyst y que el directorio actual de trabajo es tu directorio principal, /home/analyst.
+
+Es hora de practicar cómo administrar el acceso de los usuarios en Linux.
+
+### Tarea 1: Agrega un usuario nuevo
+
+1. Escribe un comando para agregar al sistema a un usuario llamado reseracher9.
+
+A continuación, debes agregar al usuario nuevo al grupo `research_team`.
+
+2. Usa el comando usermod y la opción -g para agregar a researcher9 al grupo research_team y establecerlo como su grupo primario.
+
+### Respuesta
+`sudo useradd researcher9`
+`sudo usermod research_team researcher9`
+
+### Tarea 2: Asigna la propiedad del archivo
+
+El nuevo empleado, researcher9, se ocupará del archivo project_r. En esta tarea, debes indicar que es el propietario del archivo project_r.txt.
+
+El archivo project_r.txt se encuentra en el directorio /home/researcher2/projects y su propietario es el usuario researcher2.
+
+    Usa el comando chown para establecer a researcher9 como el propietario de /home/researcher2/projects/project_r.txt.
+
+Haz clic en Revisar mi progreso para verificar que completaste esta tarea correctamente.
+
+#### Respuesta
+`sudo chown researcher9 /home/researcher2/projects/project_r.txt`
+
+### Tarea 3: Agrega al usuario a un grupo secundario
+
+Después de un par de meses, este empleado tiene otro rol en la organización, y ahora trabaja tanto en el departamento de Investigación como en el de Ventas.
+
+En esta tarea, debes agregar a researcher9 a un grupo secundario (sales_team). Su grupo primario aún es research_team.
+
+    Usa el comando usermod con las opciones -a y -G para agregar a researcher9 al grupo sales_team y establecerlo como su grupo secundario.
+
+#### Solución
+
+`sudo usermod -a -G sales_team researcher9`
+
+### Tarea 4: Borra un usuario.
+
+1. Ejecuta un comando para borrar a researcher9 del sistema:
+
+`sudo userdel researcher9`
+
+2. Ejecuta el siguiente comando para borrar el grupo researcher9, que ya no es necesario:
+   
+`sudo groupdel researcher9`
+
+## Páginas man dentro del shell
+En Linux puedes obtener ayuda en líneas de comandos. Por ejemplo, `man` muestra información sobre otros comandos y cómo funcionan. El nombre de este comando viene de la palabra manual.
+
+`$ man usermod` devuelve información con una descripción general.
+
+Cuando queremos saber rápido qué hace un comando, usamos `whatis`. Muestra una descripción de un comando en una sola línea.
+
+`$ whatis tail`
+
+`Apropos` busca una determinada cadena en las descripciones del manual.
+
+`$ apropos password`
+`$ apropos -a change password`
+
+### Tarea 1: Obtener más información sobre los comandos
+
+1. `whatis cat`
+
+2. Usa el comando `man` para obtener más detalles sobre `cat`.
+
+3. `press Q para salir de la línea de comandos`.
+
+4. Usa apropos para encontrar un comando que muestre la primera parte de un archivo.
+
+`apropos -a first part file`
+
+### Tarea 2: Explora el comando useradd
+
+1. Usa el comando de Linux más adeacuado para obtener ayuda con el comando useradd y explora todas su opciones.
+
+`man useradd`
+
+### Tarea 3: Explora los comandos rm y rmdir
+
+1. Usa el comando linux más adeacuado para recordar qué hace cada comando.
+
+`whatis rm y rmdir`
+
+### Tarea 4: Determina qué comando usar
+
+En esta tarea, imagina que necesitas crear un grupo nuevo pero que no puedes recordar qué comando usar. Debes identificar un comando adecuado mediante la búsqueda con palabras clave. En este caso, usa las palabras clave create new group.
+
+    Usa el comando de Linux más adecuado con estas palabras clave para identificar qué comando usar.
+
+`apropos -a create new group`
+
+
+ 
+ 
