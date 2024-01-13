@@ -560,6 +560,20 @@ En esta tarea, imagina que necesitas crear un grupo nuevo pero que no puedes rec
 
 `apropos -a create new group`
 
+### Tarea 1: Profundiza tus conocimientos sobre los comandos
 
- 
- 
+1. Ejecuta el comando `whatis` para obtener una descripción breve de cat.
+2. Usa el comando `man` para obtener más detalles sobre cat.
+4. Usa `apropos` para encontrar un comando que presente como resultado la primera parte de un archivo:
+`apropos -a first part file`
+
+### Tarea 2: Explora el comando useradd
+
+1. Usa el comando de linux más adeacuado para obtener ayuda con el comando useradd.
+
+`man useradd`
+
+### Tarea 3: Comando rm y rmdir
+
+`whatis rm`
+`wathis rmdir`
