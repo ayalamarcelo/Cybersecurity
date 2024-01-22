@@ -596,3 +596,233 @@ SELECT firstname, lastname, email, country
 FROM customers
 WHERE NOT country = 'Canada' AND NOT country = 'USA';
 ```
+## Combina tablas en SQL
+Es útil cuando necesitamos información de dos tablas en una base de datos. Digamos que tenemos dos tablas, una sobre vulnerabilidades de distintos SO y otra sobre los equipos de la empresa, incluyendo susSO. AL combinarlas. obtenemos una lista de equipos vulnerables.
+Como estamos con dos tablas, debemos indicarle a SQL de qué tabla recopilar las columnas. En la base de datos de ejemplos, tenemos la columna employee_id tanto en la tabla employees y como en la tabla machines. En sentencias SQL con dos columnas, SQL necesita saber a qué columna nos referimos. Para ello, escribimos el nombre de la tabla seguifo de un punto, y luego el nombre de la columna. Así tenemos employees, seguido de un punto y el nombre de la columna. Esta es la columna employee_id de la tabla employees. 
+
+| employees |  | machines |
+|:-   ------|  |:---------|
+| employee_id | | devide_id |
+| device_id |  | employee_id |
+| username |  | operating_system |
+| department |  | email_client |
+| office |  | OS_patch_date |
+
+Del mismo modo, esta es la columna eployee_id de la tabla machines. Tras entender esta sintaxis, apliquémosla a una combinación.
+
+`employees.employee_id`
+
+`machines.employee_id`
+
+La clave primaria de la tabla employees es employee_id, que es una clave foránea en la tabla machines. Employee_id es una clave primaria en la tabla employees porque tiene un valor único en cada fila de la tabla employees y ningún valor vacío. 
+
+### Combinación interna, o `INNER JOIN`
+Una combinación interna devuelve filas que coinciden en una columna especificada que existe en más de una tabla. Las tablas suelen tener muchas más fulas, peor para explicar mejor la INNER JOIN solo veremos cuatro filas de la tabla employees y cuatro de la tabla machines. También veremos solo unas columnas de cada tabla en este ejemplo. Digamos que legimos employee_id en ambas tablas para hacer una combinación interna. Veamos las dos filas donde hay una coincidencia.
+
+## Valores NULL
+En SQL, NULL representa un valor faltante por cualquier motivo. En este caso, podrían ser equipos no asignados a ningún empleado.
+
+
+```sql
+
+SELECT username, office, operating_system
+FROM employees
+INNER JOIN machines ON employees.employee_ID = machines.employee_id;
+```
+Desglocemos, INNER JOIN indica a SQL que cree la combinación. Luego, nombramos la segunda tabla que quremos combinar con la primera. Esta se llama tabla derecha. Aquí queremos combinar la tabla machines con la tabla employees que ya se indentificó después de FROM. Por último, indicamos a SQL en qué columna basar la combinación. En nuestro casi, usamos la columna employee?id. Como usamos dos tablas, debemos identificar la tabla y seguirña con el nombre de la columna, por lo que tenemos employees.employee_id y machines.employee_id.
+
+`Combinaciones = joins`
+
+## Tipos de combinaciones (joins)
+En los ejercicios anteriores, vimos cómo las combinaciones internas sirven al devolver únicamente registros con un mismo valor en columnas especificadas. Pero puede que necesitemos todas las entradas de una tabla o ambas. En este caso, necesitamos combinaciones externas. Hay tres tipos de combinaciones externas, LEFT JOIN, o izquierda, RIGHT JOIN, o derecha y FULL OUTER JOIN, o completa. Al igual que las combinaciones internas, las exteriores combinan dos tablas. Pero no necesitan una coincidencia entre columnas para deovolver una filas. Se devuelven filas según el tipo de unión. LEFT JOIN devuelve todos lo registros de la primera tabla, pero solo devuelve filas de la segunda que coinciden con una columna especificada. Como en el video anterior, veremos este tipo de combinación con solo cuatro filas de dos tablas con pocas columnas. La de employees es la tabla izquierda, o primera tabla, y la de machines es la derecha, o segunda. Realicemos la combinación con employee?id. en esta columna hay una coincidencia para dos de los cuatro registros. Al ejecutar la combinación, SQL devuelve estas filas con el valor coincidente, es resto de filas de la tabla izquierda y todas las columnas de ambas tablas. Los registros izquierdos que no coincidieron pero uferon devueltos con LEFT JOIN tienen valores NULLen columnas que vienen de la tabla machines. Ahora hablemos de combinaciones derechas. RIGHT JOIN devuelve todos los registro de la segunda tabla, pero solo filas de la primera tabla que coinciden con una columna especificada. Con un RIGHT JOIN en el ejemplo anterior, el resultado completo devuelve todas las filas de la segunda tabla y todas las columnas de ambas tablas. Los valores que no existen en ninguna tabla queda con NULL. Ahora hablemos de combinaciones externas completas. FULL OUTER JOIN devuelve todos los registros de ambas tablas. En el ejemplo, una FULL OUTER JOIN devuelve todas las columnas de todas las tablas. Si una fila no tiene valor en una columna, devuelve NULL. Por ejemplo, la tabla machines no tiene filas con employee_id 1190, por lo que los valores de esa fila y de las columnas de la tabla machine son NULL. Para implementar combinaciones izquierdas, derechas y completas en SQL, se usa la misma estructura sintática de INNER JOIN, pero estas palabras clave, LEFT JOIN, RIGHT JOIN y FULL OUTER JOIN. Como analista, no hace falta saber todo esto de memoria. Al saber la combinación que necesitas, puedes encontrar rápido información para ejecutar estas consultas.
+
+```sql
+FULL OUTER JOIN machines ON
+employees.employee_id = machines.employee_id
+```
+## Compara tipos de combinaciones (Joins)
+
+Anteriormente, estudiaste las combinaciones en SQL y cómo usarlas para combinar datos de varias tablas cuando estas tienen una columna en común. Además, aprendiste que existen distintos tipos de combinaciones y que cada una de ellas devuelve diferentes filas de las tablas que se combinan. En esta lectura, revisarás estos conceptos y analizarás en mayor profundidad la sintaxis necesaria para cada tipo de combinación.
+Combinaciones internas
+
+El primer tipo de combinación que puedes ejecutar es una combinación interna. INNER JOIN devuelve filas que coinciden en una columna especificada que existe en más de una tabla.  
+
+Esta solo devuelve filas donde existe una coincidencia pero, como en otros tipos de combinaciones, devuelve todas las columnas especificadas de todas las tablas combinadas. Por ejemplo, si la consulta combina dos tablas con SELECT *, se devuelven todas las columnas en ambas tablas.
+
+Nota: Si una columna existe en ambas tablas, esta se devuelve dos veces al usar SELECT *.
+
+La sintaxis de una combinación interna
+
+Para escribir una consulta usando INNER JOIN, puedes utilizar la siguiente sintaxis:
+
+SELECT *
+
+FROM employees
+
+INNER JOIN machines ON employees.device_id = machines.device_id;
+
+Debes especificar las dos tablas a combinar incluyendo la tabla primera o izquierda después de FROM y la tabla segunda o derecha después de INNER JOIN.
+
+Después del nombre de la tabla derecha, usa la palabra clave ON y el operador = para indicar la columna en la que estás combinando las tablas. Es importante que especifiques los nombres tanto de la tabla como de la columna en esta parte de la combinación colocando un punto (.) entre la tabla y la columna.  
+
+Además de seleccionar todas las columnas, puedes seleccionar solo ciertas columnas. Por ejemplo, si quieres que la combinación solo devuelva las columnas username (nombre de usuario), operating_system (sistema operativo) y device_id (ID de dispositivo), puedes escribir esta consulta:
+
+SELECT username, operating_system, employees.device_id
+
+FROM  employees
+
+INNER JOIN machines ON employees.device_id = machines.device_id;
+
+Nota: En la consulta de ejemplo, username (nombre de usuario) y operating_system (sistema operativo) solo aparecen en una de las dos tablas, por lo que se escriben solo con el nombre de la columna. Por otra parte, como device_id (ID de dispositivo) aparece en ambas tablas, es necesario indicar cuál devolver, especificando el nombre tanto de la tabla como de la columna (employees.device_id).
+Combinaciones externas
+
+Las combinaciones externas amplían lo que se devuelve a partir de una combinación. Cada tipo de combinación externa devuelve todas las filas de una o de ambas tablas.
+
+Combinaciones izquierdas
+
+Cuando combinas dos tablas, LEFT JOIN  devuelve todos los registros de la primera tabla, pero solo devuelve las filas de la segunda tabla que coinciden en una columna especificada.   
+
+La sintaxis para usar LEFT JOIN se demuestra en la consulta siguiente:
+
+SELECT *
+
+FROM employees
+
+LEFT JOIN machines ON employees.device_id = machines.device_id;
+
+Como con todas las combinaciones, debes especificar la tabla primera o izquierda como la tabla que viene después de FROM y la tabla segunda o derecha como la tabla que viene después de LEFT JOIN. En la consulta de ejemplo, como employees (empleados/as) es la tabla izquierda, se devuelven todos sus registros. Solo se devuelven los registros que coinciden en la columna device_id (ID de dispositivo) desde la tabla derecha, machines (equipos). 
+
+Combinaciones derechas
+
+Cuando combinas dos tablas, RIGHT JOIN devuelve todos los registros de la segunda tabla, pero solo devuelve las filas de la primera tabla que coinciden en una columna especificada.  
+
+La consulta siguiente demuestra la sintaxis para RIGHT JOIN:
+
+SELECT *
+
+FROM employees
+
+RIGHT JOIN machines ON employees.device_id = machines.device_id;
+
+RIGHT JOIN tiene la misma sintaxis que LEFT JOIN, con la única diferencia de que la palabra clave RIGHT JOIN ordena a SQL generar resultados distintos. La consulta devuelve todos los registros de machines (equipos), que es la tabla segunda o derecha. Solo se devuelven registros coincidentes de employees (empleados/as), que es la tabla primera o izquierda.
+
+Nota:  Puedes usar LEFT JOIN y RIGHT JOIN y obtener exactamente los mismos resultados si usas las tablas en orden inverso. La consulta RIGHT JOIN siguiente devuelve exactamente el mismo resultado que la consulta LEFT JOIN demostrada en la sección anterior:
+
+SELECT *
+
+FROM machines
+
+RIGHT JOIN employees ON employees.device_id = machines.device_id;
+
+Para cambiar de lugar las tablas izquierda y derecha, solo tienes que modificar el orden de las tablas que aparecen antes y después de la palabra clave utilizada para la combinación.
+
+Combinaciones externas completas 
+
+FULL OUTER JOIN (Combinación externa completa) devuelve todos los registros de ambas tablas. Puedes utilizarla como una manera de fusionar totalmente dos tablas.  
+
+Puedes revisar la sintaxis para usar FULL OUTER JOIN en la consulta siguiente:
+
+SELECT *
+
+FROM employees
+
+FULL OUTER JOIN machines ON employees.device_id = machines.device_id;
+
+Los resultados de una consulta FULL OUTER JOIN incluyen todos los registros de ambas tablas. De manera similar a INNER JOIN, el orden de las tablas no modifica los resultados de la consulta.
+
+### Tarea 1: Une a los empleados con su máquina
+
+Debes usar una unión interna de SQL para obtener los registros que necesitas en función de una columna relacionada. En este caso, ambas tablas incluyen la columna device_id. Esta es la que usarás para realizar la unión.
+
+ 1. Ejecuta la siguiente consulta para recuperar todos los registros de la tabla machines:
+
+```sql
+
+SELECT *
+FROM machines;
+```
+
+2. Completa la consulta para realizar una unión interna entre las tablas machines y employees en la columna device_id. Reemplaza la X y la Y con este nombre de columna:
+
+```sql
+SELECT *
+FROM machines
+INNER JOIN employees ON machines.X = employees.Y;
+```
+### Tarea 2: Obtén más datos
+Para ello, completarás una unión izquierda y una derecha en las tablas employees y machines. Los resultados incluirán todos los registros de una tabla o la otra. Debes vincular estas tablas usando la columna en común device_id.
+
+2. Ejecuta la siguiente consulta en SQL para conectar las tablas machines y employees mediante una unión izquierda. Debes reemplazar la X con la palabra clave en la consulta:
+
+```sql
+FROM machines
+X JOIN employees ON machines.device_id = employees.device_id;
+```
+2. Ejecuta la siguiente consulta en SQL para conectar las tablas machines y employees mediante una unión derecha. Debes reemplazar la X con la palabra clave en la consulta para resolver el problema:
+
+```sql
+SELECT *
+FROM machines
+X JOIN employees ON machines.device_id = employees.device_id;
+```
+### Tarea 3: Recupera datos de intentos de acceso
+Para seguir investigando el incidente de seguridad, debes recuperar la información de todos los empleados que realizaron intentos de acceso. Para lograrlo, realizarás una unión interna en las tablas employees y log_in_attempts, y las vincularás con la columna en común username.
+
+* Ejecuta la siguiente consulta en SQL para realizar una unión interna en las tablas employees y log_in_attempts. Reemplaza la X por el nombre de la tabla correcta: Luego, reemplaza la Y y la Z por el nombre de la columna que conecta las dos tablas:
+
+```sql
+SELECT *
+FROM employees
+INNER JOIN X ON Y = Z;
+```
+SELECT * 
+FROM employees 
+INNER JOIN log_in_attempts ON employees.username = log_in_attempts.username;
+
+## Aprendizaje continuo en SQL
+
+Has aprendido mucho acerca de SQL, incluso cómo aplicar filtros a consultas SQL y combinar varias tablas en una consulta. En esta lectura, explorarás un ejemplo de algo nuevo que puedes agregar a tu caja de herramientas de SQL: las funciones de agregado. Luego, te centrarás en cómo seguir aprendiendo sobre este y otros temas de SQL por tu cuenta.
+Funciones de agregado
+
+En SQL, las funciones de agregado son funciones que realizan un cálculo en varios puntos de datos y devuelven el resultado de este. No devuelven los datos en sí. 
+
+Existen diversas funciones de agregado que realizan distintos cálculos:
+
+    COUNT devuelve un solo número que representa la cantidad de filas devueltas por tu consulta.
+
+    AVG devuelve un solo número que representa el promedio de los datos numéricos en una columna.
+
+    SUM devuelve un solo número que representa la suma de los datos numéricos en una columna. 
+
+Sintaxis de las funciones de agregado
+
+Para usar una función de agregado, coloca la palabra clave para está después de la palabra clave SELECT y luego, entre paréntesis, indica la columna en la que deseas realizar el cálculo.
+
+Por ejemplo, cuando trabajas con la tabla customers (clientes), puedes usar las funciones de agregado para resumir información importante acerca de la tabla. Si quieres averiguar cuántos/as clientes hay en total, puedes usar la función COUNT en cualquier columna y SQL devolverá el número total de registros, excepto los valores NULL (nulos). Puedes ejecutar esta consulta y analizar sus resultados:  
+
+```sql
+SELECT COUNT(firstname)
+FROM customers;
+```
+El resultado es una tabla con una columna titulada COUNT(firstname) y una fila que indica el recuento.
+
+Si quieres obtener el número de clientes de un país específico, puedes agregar un filtro a tu consulta:
+
+```sql
+
+SELECT COUNT(firstname)
+FROM customers
+WHERE country = 'USA';
+```
+Con este filtro, el recuento es menor porque solo incluye los registros en que la columna country (país) contiene un valor de 'USA'(EE.UU.).
+
+En SQL, existen muchas otras funciones de agregado. La sintaxis de colocarlas después de SELECT es exactamente igual que en la función COUNT.
+Sigue aprendiendo sobre SQL
+
+SQL es un lenguaje de consulta ampliamente utilizado, con muchas más palabras clave y aplicaciones. Puedes seguir aprendiendo más sobre funciones de agregado y otros aspectos del uso de SQL por tu cuenta.
+
+Lo más importante es que asumas las tareas nuevas con curiosidad y disposición a identificar nuevas maneras de aplicar SQL en tu trabajo como analista de seguridad. Identifica los resultados de datos que necesitas e intenta usar SQL para obtenerlos.
+
+SQL es una de las herramientas más importantes para trabajar con bases de datos y analizar información, por lo que encontrarás numerosos recursos de apoyo al intentar aprender más sobre él en línea. En primer lugar, procura buscar los conceptos que ya aprendiste y practicaste, para identificar recursos que te ofrezcan explicaciones precisas y fáciles de seguir. Una vez que identifiques estos recursos, puedes usarlos para ampliar tus conocimientos.
+
+También es importante que sigas adquiriendo experiencia práctica con SQL. Además, puedes buscar bases de datos nuevas para ejecutar consultas SQL usando lo que aprendiste.
