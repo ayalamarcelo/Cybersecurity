@@ -826,3 +826,4 @@ Lo más importante es que asumas las tareas nuevas con curiosidad y disposición
 SQL es una de las herramientas más importantes para trabajar con bases de datos y analizar información, por lo que encontrarás numerosos recursos de apoyo al intentar aprender más sobre él en línea. En primer lugar, procura buscar los conceptos que ya aprendiste y practicaste, para identificar recursos que te ofrezcan explicaciones precisas y fáciles de seguir. Una vez que identifiques estos recursos, puedes usarlos para ampliar tus conocimientos.
 
 También es importante que sigas adquiriendo experiencia práctica con SQL. Además, puedes buscar bases de datos nuevas para ejecutar consultas SQL usando lo que aprendiste.
+
