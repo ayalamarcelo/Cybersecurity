@@ -1,0 +1,5 @@
+# El qué, el porqué y el cómo de la seguridad de los activos
+Componentes de la triada CID, planificar los riesgos es el primer paso para proteger estos pilares. Debes saber los conceptos básicos de cómo se elaboran los planes de seguridad.
+Los planes de seguridad se basan en el análisis de tres elementos: activos, amenazas y vulnerabilidades. Las empresas miden el riesgo analizando cómo cada elemento puede afectar la confidencialidad, integridad y disponibilidad de la información y sistemas.
+Un *activo* es un elemento que una empresa percibe como valioso. Una *amenaza* es una circunstancia o evento que puede afectar negativamente los activos. Una *vulnerabilidad* es una debilidad que puede ser aprovechada por una amenaza.
+Son como los defectos de un activo. Los activos tienen varias vulnerabilidades que son un blanco fácil para los atacantes.
